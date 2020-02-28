@@ -1,3 +1,5 @@
+import torch.nn as nn
+
 from .utils import Initializer
 from .init import feedforward_init
 
