@@ -1,7 +1,7 @@
 import torch
 import pytest
 
-from torch_kgcn.nn.init import feedforward_init, _feedforward_init, Initializer
+from kgcn_torch.nn.init import feedforward_init, _feedforward_init, Initializer
 
 
 @pytest.fixture(params=[Initializer.UNIFORM,

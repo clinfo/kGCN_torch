@@ -1,4 +1,4 @@
-import torch_kgcn.backward_compatibility.console as console
+import kgcn_torch.backward_compatibility.console as console
 
 def test_gcn():
     console.gcn()

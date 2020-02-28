@@ -1,5 +1,6 @@
 from ..logger import get_logger
 
+
 def gcn():
     from .gcn import main
     logger = get_logger("tkgcn")
