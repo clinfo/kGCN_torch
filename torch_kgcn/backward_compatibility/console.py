@@ -1,23 +1,36 @@
+from ..logger import get_logger
+
 def gcn():
-    print("gcn")
-    pass
+    from .gcn import main
+    logger = get_logger("tkgcn")
+    main(logger=logger)
+
 
 def chem():
-    print("chem")
-    pass
+    from .chem import main
+    logger = get_logger("tkgcn-chem")
+    main(logger=logger)
+
 
 def cv_splitter():
-    print("cv_splitter")
-    pass
+    from .cv_splitter import main
+    logger = get_logger("tkgcn-cv-splitter-")
+    main(logger=logger)
+
 
 def opt():
-    print("opt")
-    pass
+    from .opt import main
+    logger = get_logger("tkgcn-opt")
+    main(logger=logger)
+
 
 def gen():
-    print("gen")
-    pass
+    from .gen import main
+    logger = get_logger("tkgcn-gen")
+    main(logger=logger)
+
 
 def task_sparse_gcn():
-    print("task_sparse_gcn")
-    pass
+    from .task_sparse_gcn import main
+    logger = get_logger("tkgcn-sparse")
+    main(logger=logger)
