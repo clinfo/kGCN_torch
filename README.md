@@ -2,7 +2,7 @@
 # Pytorch Implementation of [kGCN](https://github.com/clinfo/kGCN)
 
 ## Requirements
-* Python3 (> 3.7)
+* Python3 (>= 3.6)
 
 # License
 This edition of kGCN is for evaluation, learning, and non-profit academic research purposes only, and a license is needed for any other uses. Please send requests on license or questions to kojima.ryosuke.8e@kyoto-u.ac.jp.
