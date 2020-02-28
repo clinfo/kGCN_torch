@@ -1,3 +1,4 @@
+![Python package](https://github.com/clinfo/kGCN_torch/workflows/Python%20package/badge.svg)
 # Pytorch Implementation of [kGCN](https://github.com/clinfo/kGCN)
 
 ## Requirements
