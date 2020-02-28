@@ -37,6 +37,16 @@ setuptools.setup(
         'docs': [
             'sphinx >= 1.4',
             'sphinx_rtd_theme']},
+    entry_points={
+        'console_scripts': [
+            'tkgcn = torch_kgcn.backward_compatibility.console:gcn',
+            'tkgcn-chem = torch_kgcn.backward_compatibility.console:chem',
+            'tkgcn-cv-splitter = torch_kgcn.backward_compatibility.console:cv_splitter',
+            'tkgcn-opt = torch_kgcn.backward_compatibility.console:opt',
+            'tkgcn-gen = torch_kgcn.backward_compatibility.console:gen',
+            'tkgcn-sparse = torch_kgcn.backward_compatibility.console:task_sparse_gcn',
+        ],
+    },
     classifiers=[
         'Programming Language :: Python :: 3.6',
         "License :: OSI Approved :: MIT License",
