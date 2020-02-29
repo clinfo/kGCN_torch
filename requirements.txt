@@ -1,1 +1,8 @@
+future
+numpy
+pyyaml
+requests
+setuptools
+six
+typing
 torch >= 1.0.0
