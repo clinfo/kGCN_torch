@@ -20,7 +20,7 @@ test_require = [
 ]
 
 setuptools.setup(
-    name="torch_kgcn",
+    name="kgcn_torch",
     version="0.1.0",
     python_requires='>3.5',
     author="Ryosuke Kojima",
@@ -37,8 +37,21 @@ setuptools.setup(
         'docs': [
             'sphinx >= 1.4',
             'sphinx_rtd_theme']},
+    entry_points={
+        'console_scripts': [
+            'kgcnt = kgcn_torch.backward_compatibility.console:gcn',
+            'kgcnt-chem = kgcn_torch.backward_compatibility.console:chem',
+            'kgcnt-cv-splitter = kgcn_torch.backward_compatibility.console:cv_splitter',
+            'kgcnt-opt = kgcn_torch.backward_compatibility.console:opt',
+            'kgcnt-gen = kgcn_torch.backward_compatibility.console:gen',
+            'kgcnt-sparse = kgcn_torch.backward_compatibility.console:task_sparse_gcn',
+        ],
+    },
     classifiers=[
+        'Programming Language :: Python',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
