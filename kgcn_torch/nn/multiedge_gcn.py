@@ -1,5 +1,6 @@
 import typing
 
+import torch
 import torch.nn as nn
 import torch_geometric.nn as geonn
 import torch_geometric.data as Data
