@@ -1,5 +1,8 @@
+import typing
+
 import torch.nn as nn
 import torch_geometric.nn as geonn
+import torch_geometric.data as Data
 
 from .base_module import BaseModule
 from .utils import Initializer
@@ -23,14 +26,13 @@ class MultiedgeGCN(BaseModule):
                  initializer: Initializer=Initializer.XAVIER_NORMAL,
                  **kwargs):
         super(MultiedgeGCN, self).__init__()
-        self.output_dim = output_dim
         self.adj_channel_num = self.adj_channel_num
         self.gcns = nn.ModuleList([
             geonn.GCNConv(in_channels, out_channels,
                           improved, cached, bias, normalize, **kwargs)
-            for i in range(adj_channel_num)
+            for _ in range(adj_channel_num)
             ])
         self._initialize(initializer)
 
-    def forward(self):
-        pass
+    def forward(self, data_list: typing.List[Data]) -> typing.List[torch.Tensor]:
+        return [m(d.x, d.edge_index) for m, d in zip(self.gcns, data_list)]
