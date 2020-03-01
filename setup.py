@@ -16,7 +16,8 @@ install_requires = [
 test_require = [
     'pytest-cov',
     'pytest-html',
-    'pytest'
+    'pytest',
+    'click'
 ]
 
 setuptools.setup(
@@ -39,12 +40,12 @@ setuptools.setup(
             'sphinx_rtd_theme']},
     entry_points={
         'console_scripts': [
-            'kgcnt = kgcn_torch.backward_compatibility.console:gcn',
-            'kgcnt-chem = kgcn_torch.backward_compatibility.console:chem',
-            'kgcnt-cv-splitter = kgcn_torch.backward_compatibility.console:cv_splitter',
-            'kgcnt-opt = kgcn_torch.backward_compatibility.console:opt',
-            'kgcnt-gen = kgcn_torch.backward_compatibility.console:gen',
-            'kgcnt-sparse = kgcn_torch.backward_compatibility.console:task_sparse_gcn',
+            'kgcnt = kgcn_torch.backward_compatibility.gcn:main',
+            'kgcnt-chem = kgcn_torch.backward_compatibility.chem:main',
+            'kgcnt-cv-splitter = kgcn_torch.backward_compatibility.cv_splitter:main',
+            'kgcnt-opt = kgcn_torch.backward_compatibility.opt:main',
+            'kgcnt-gen = kgcn_torch.backward_compatibility.gen:main',
+            'kgcnt-sparse = kgcn_torch.backward_compatibility.task_sparse_gcn:main',
         ],
     },
     classifiers=[
