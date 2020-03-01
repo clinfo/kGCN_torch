@@ -33,7 +33,10 @@ from ..utils.logger import get_logger
     help="set scaling targets for Integrated Gradients",
 )
 @click.option(
-    "--ig_label_target", type=str, default="max", help="[visualization mode only] max/all/(label index)",
+    "--ig_label_target",
+    type=str,
+    default="max",
+    help="[visualization mode only] max/all/(label index)",
 )
 @click.option(
     "--visualize_type",
@@ -45,10 +48,16 @@ from ..utils.logger import get_logger
     " using target edge and score function.",
 )
 @click.option(
-    "--visualize_target", type=int, default=None, help="set the target's number you want to visualize. from: [0, ~)",
+    "--visualize_target",
+    type=int,
+    default=None,
+    help="set the target's number you want to visualize. from: [0, ~)",
 )
 @click.option(
-    "--visualize_resample_num", type=int, default=None, help="resampling for visualization: [0, ~v)",
+    "--visualize_resample_num",
+    type=int,
+    default=None,
+    help="resampling for visualization: [0, ~v)",
 )
 @click.option(
     "--visualize_method",
@@ -61,7 +70,8 @@ from ..utils.logger import get_logger
     type=int,
     default=1,
     help=(
-        "set the distance from target node. An output graph is created within " "the distance from target node. :[1, ~)"
+        "set the distance from target node. An output graph is created within "
+        "the distance from target node. :[1, ~)"
     ),
 )
 @click.option(

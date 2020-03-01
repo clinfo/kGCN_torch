@@ -5,12 +5,13 @@ import torch.nn as nn
 class Initializer(Flag):
     """ Initializer enum class.
     """
+
     UNIFORM = auto()
     NORMAL = auto()
-    XAVIER = auto()             # XAVIER_NORMAL
-    KAIMING = auto()            # KAIMING_NORMAL
+    XAVIER = auto()  # XAVIER_NORMAL
+    KAIMING = auto()  # KAIMING_NORMAL
     XAVIER_UNIFORM = XAVIER | UNIFORM
-    XAVIER_NORMAL = XAVIER | NORMAL      # Glorot initialization
+    XAVIER_NORMAL = XAVIER | NORMAL  # Glorot initialization
     KAIMING_UNIFORM = KAIMING | UNIFORM
     KAIMING_NORMAL = KAIMING | NORMAL
 
@@ -40,14 +41,13 @@ def feedforward_init(dnn: nn.Module, _init: Initializer) -> nn.Module:
         raise ValueError(f"Not supported input value = {_init}")
 
 
-def _feedforward_init(dnn: nn.Module,
-                      init_xavier: bool=True,
-                      init_kaiming: bool=True,
-                      init_normal: bool=True):
+def _feedforward_init(
+    dnn: nn.Module, init_xavier: bool = True, init_kaiming: bool = True, init_normal: bool = True
+):
     for name, p in dnn.named_parameters():
-        if 'bias' in name:
+        if "bias" in name:
             p.data.zero_()
-        if 'weight' in name:
+        if "weight" in name:
             if len(p.data.shape) == 1:
                 if init_normal:
                     nn.init.normal_(p.data)

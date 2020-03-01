@@ -6,5 +6,5 @@ from kgcn_torch.backward_compatibility.gen import main
 
 def test_main():
     runner = CliRunner()
-    result = runner.invoke(main, ['train'])
+    result = runner.invoke(main, ["train"])
     assert result.exit_code == 0

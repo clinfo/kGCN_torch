@@ -44,7 +44,10 @@ import click
     "--use_sybyl", is_flag=True, default=False, help="[Additional features] SYBYL atom types",
 )
 @click.option(
-    "--use_electronegativity", is_flag=True, default=False, help="[Additional features] electronegativity",
+    "--use_electronegativity",
+    is_flag=True,
+    default=False,
+    help="[Additional features] electronegativity",
 )
 @click.option(
     "--use_gasteiger", is_flag=True, default=False, help="[Additional features] gasteiger charge",

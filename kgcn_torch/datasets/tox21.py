@@ -9,37 +9,53 @@ from rdkit import Chem
 from rdkit.Chem import rdmolops
 
 from .base_dataset import InMemoryRdkitDataset
-from .utils import (check_download_file_size,
-                    check_local_file_size,
-                    extract_zipfile,
-                    get_mol_edge_index,
-                    download)
+from .utils import (
+    check_download_file_size,
+    check_local_file_size,
+    extract_zipfile,
+    get_mol_edge_index,
+    download,
+)
 from ..utils import to_Path
 
 
 class Tox21Dataset(InMemoryRdkitDataset):
     _urls = {
-        'train': {
-            'url': 'https://tripod.nih.gov/tox21/challenge/download?id=tox21_10k_data_allsdf',
-            'filename': 'tox21_10k_data_all.sdf.zip'},
-        'val': {
-            'url': 'https://tripod.nih.gov/tox21/challenge/download?'
-            'id=tox21_10k_challenge_testsdf',
-            'filename': 'tox21_10k_challenge_test.sdf.zip'
+        "train": {
+            "url": "https://tripod.nih.gov/tox21/challenge/download?id=tox21_10k_data_allsdf",
+            "filename": "tox21_10k_data_all.sdf.zip",
         },
-        'test': {
-            'url': 'https://tripod.nih.gov/tox21/challenge/download?'
-            'id=tox21_10k_challenge_scoresdf',
-            'filename': 'tox21_10k_challenge_score.sdf.zip'
-        }
+        "val": {
+            "url": "https://tripod.nih.gov/tox21/challenge/download?"
+            "id=tox21_10k_challenge_testsdf",
+            "filename": "tox21_10k_challenge_test.sdf.zip",
+        },
+        "test": {
+            "url": "https://tripod.nih.gov/tox21/challenge/download?"
+            "id=tox21_10k_challenge_scoresdf",
+            "filename": "tox21_10k_challenge_score.sdf.zip",
+        },
     }
-    _label_names = ['NR-AR', 'NR-AR-LBD', 'NR-AhR', 'NR-Aromatase', 'NR-ER',
-                    'NR-ER-LBD', 'NR-PPAR-gamma', 'SR-ARE', 'SR-ATAD5',
-                    'SR-HSE', 'SR-MMP', 'SR-p53']
+    _label_names = [
+        "NR-AR",
+        "NR-AR-LBD",
+        "NR-AhR",
+        "NR-Aromatase",
+        "NR-ER",
+        "NR-ER-LBD",
+        "NR-PPAR-gamma",
+        "SR-ARE",
+        "SR-ATAD5",
+        "SR-HSE",
+        "SR-MMP",
+        "SR-p53",
+    ]
 
-    def __init__(self, target='train', savedir='.', none_label=-1, max_n_atoms=150, max_n_types=100):
+    def __init__(
+        self, target="train", savedir=".", none_label=-1, max_n_atoms=150, max_n_types=100
+    ):
         self.target = target
-        self.filename = self._urls[self.target]['filename'].replace('.zip', '')
+        self.filename = self._urls[self.target]["filename"].replace(".zip", "")
         self.none_label = none_label
         self.max_n_atoms = max_n_atoms
         self.max_n_types = max_n_types
@@ -50,15 +66,15 @@ class Tox21Dataset(InMemoryRdkitDataset):
 
     @property
     def raw_file_names(self):
-        return self._urls[self.target]['filename'].replace('.zip', '')
+        return self._urls[self.target]["filename"].replace(".zip", "")
 
     @property
     def processed_file_names(self):
-        return self._urls[self.target]['filename'].replace('.sdf.zip', '') + '.pt'
+        return self._urls[self.target]["filename"].replace(".sdf.zip", "") + ".pt"
 
     def download(self):
-        url = self._urls[self.target]['url']
-        filename = self._urls[self.target]['filename']
+        url = self._urls[self.target]["url"]
+        filename = self._urls[self.target]["filename"]
         savefilename = to_Path(self.root) / filename
         if savefilename.exists():
             local_file_size = check_local_file_size(savefilename)
@@ -101,7 +117,7 @@ class Tox21Dataset(InMemoryRdkitDataset):
         N = mol.GetNumAtoms()
         edge_index, edge_attr = coalesce(edge_index, edge_attr, N, N)
         data = Data(atoms, edge_index, edge_attr, label)
-        #data.num_nodes = self.max_n_atoms
+        # data.num_nodes = self.max_n_atoms
         return data
 
     def _get_valid_mols(self):
