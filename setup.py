@@ -16,7 +16,8 @@ install_requires = [
 test_require = [
     'pytest-cov',
     'pytest-html',
-    'pytest'
+    'pytest',
+    'click'
 ]
 
 setuptools.setup(
