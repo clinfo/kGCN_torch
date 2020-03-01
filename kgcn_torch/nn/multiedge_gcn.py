@@ -18,16 +18,16 @@ class MultiedgeGCN(BaseModule):
     """
 
     def __init__(
-        self,
-        in_channels: int,
-        out_channels: int,
-        improved: bool = False,
-        cached: bool = False,
-        bias: bool = True,
-        normalize: bool = True,
-        adj_channel_num: int = 1,
-        initializer: Initializer = Initializer.XAVIER_NORMAL,
-        **kwargs
+            self,
+            in_channels: int,
+            out_channels: int,
+            improved: bool = False,
+            cached: bool = False,
+            bias: bool = True,
+            normalize: bool = True,
+            adj_channel_num: int = 1,
+            initializer: Initializer = Initializer.XAVIER_NORMAL,
+            **kwargs
     ):
         super(MultiedgeGCN, self).__init__()
         self.adj_channel_num = self.adj_channel_num

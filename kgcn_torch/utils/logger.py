@@ -1,7 +1,13 @@
+# coding: utf-8
+""" logger module
+"""
+
 import logging
 
 
 def get_logger(logname: str):
+    """ return logger
+    """
     logger = logging.getLogger(logname)
     stream_handler = logging.StreamHandler()
     stream_handler.setLevel(logging.DEBUG)
