@@ -1,23 +1,24 @@
-import os
-import re
-import setuptools
 from pathlib import Path
+import setuptools
 
-p = Path(__file__)
+path = Path(__file__)
 
 setup_requires = [
     'numpy',
-    'pytest-runner'
+    'pytest-runner',
+    'pytest-pylint'
 ]
 
 install_requires = [
+    'click',
 ]
 
 test_require = [
     'pytest-cov',
     'pytest-html',
     'pytest',
-    'click'
+    'click',
+    'pylint'
 ]
 
 setuptools.setup(
@@ -28,7 +29,7 @@ setuptools.setup(
     author_email="kojima.ryosuke.8e@kyoto-u.ac.jp",
     description="graph convolutional network library",
     long_description_content_type="text/markdown",
-    long_description=(p.parent / 'README.md').open(encoding='utf-8').read(),
+    long_description=(path.parent / 'README.md').open(encoding='utf-8').read(),
     packages=setuptools.find_packages(),
     install_requires=install_requires,
     setup_requires=setup_requires,
