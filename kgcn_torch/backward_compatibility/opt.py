@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
+import click
 
 from ..utils.logger import get_logger
-import click
 
 
 @click.command(context_settings={"ignore_unknown_options": True})
@@ -15,5 +15,7 @@ import click
 @click.option("--gpu", type=str, default=None, help="[kgcn arg]")
 @click.option("--cpu", is_flag=True, help="[kgcn arg]")
 def main(**kwargs):
+    """ kGCN opt entry point
+    """
     logger = get_logger("tkgcn-opt")
     logger.debug(f"arguments {kwargs}")

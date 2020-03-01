@@ -1,8 +1,5 @@
-from pathlib import Path
-
 import torch
 import torch.nn.functional as F
-import torch_geometric
 from torch_geometric.data import Data
 from torch_sparse import coalesce
 from rdkit import Chem
@@ -16,23 +13,23 @@ from .utils import (
     get_mol_edge_index,
     download,
 )
-from ..utils import to_Path
+from ..utils import to_path
 
 
 class Tox21Dataset(InMemoryRdkitDataset):
+    """ tox21 dataset
+    """
     _urls = {
         "train": {
             "url": "https://tripod.nih.gov/tox21/challenge/download?id=tox21_10k_data_allsdf",
             "filename": "tox21_10k_data_all.sdf.zip",
         },
         "val": {
-            "url": "https://tripod.nih.gov/tox21/challenge/download?"
-            "id=tox21_10k_challenge_testsdf",
+            "url": "https://tripod.nih.gov/tox21/challenge/download?id=tox21_10k_challenge_testsdf",
             "filename": "tox21_10k_challenge_test.sdf.zip",
         },
         "test": {
-            "url": "https://tripod.nih.gov/tox21/challenge/download?"
-            "id=tox21_10k_challenge_scoresdf",
+            "url": "https://tripod.nih.gov/tox21/challenge/download?id=tox21_10k_challenge_scoresdf",
             "filename": "tox21_10k_challenge_score.sdf.zip",
         },
     }
@@ -52,7 +49,7 @@ class Tox21Dataset(InMemoryRdkitDataset):
     ]
 
     def __init__(
-        self, target="train", savedir=".", none_label=-1, max_n_atoms=150, max_n_types=100
+            self, target="train", savedir=".", none_label=-1, max_n_atoms=150, max_n_types=100
     ):
         self.target = target
         self.filename = self._urls[self.target]["filename"].replace(".zip", "")
@@ -75,7 +72,7 @@ class Tox21Dataset(InMemoryRdkitDataset):
     def download(self):
         url = self._urls[self.target]["url"]
         filename = self._urls[self.target]["filename"]
-        savefilename = to_Path(self.root) / filename
+        savefilename = to_path(self.root) / filename
         if savefilename.exists():
             local_file_size = check_local_file_size(savefilename)
             download_file_size = check_download_file_size(url)
@@ -84,6 +81,7 @@ class Tox21Dataset(InMemoryRdkitDataset):
         else:
             download(url, filename, self.root)
         extracted_files = extract_zipfile(savefilename, self.root)
+        return extracted_files
 
     def process(self):
         mols = self.mol
@@ -102,7 +100,7 @@ class Tox21Dataset(InMemoryRdkitDataset):
         if self.pre_filter is not None:
             data_list = [data for data in data_list if self.pre_filter(data)]
         if self.pre_transform is not None:
-            data_lsit = [self.pre_transform(data) for data in data_list]
+            data_list = [self.pre_transform(data) for data in data_list]
         data, slices = self.collate(data_list)
         torch.save((data, slices), self.processed_paths[0])
 
@@ -113,9 +111,8 @@ class Tox21Dataset(InMemoryRdkitDataset):
         if edge_index.nelement() == 0:
             return None
         label = self._get_label(mol).long()
-        n_edges = mol.GetNumBonds()
-        N = mol.GetNumAtoms()
-        edge_index, edge_attr = coalesce(edge_index, edge_attr, N, N)
+        n_atoms = mol.GetNumAtoms()
+        edge_index, edge_attr = coalesce(edge_index, edge_attr, n_atoms, n_atoms)
         data = Data(atoms, edge_index, edge_attr, label)
         # data.num_nodes = self.max_n_atoms
         return data

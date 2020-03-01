@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
+import click
 
 from ..utils.logger import get_logger
-import click
 
 
 @click.command(context_settings={"ignore_unknown_options": True})
@@ -20,4 +20,7 @@ import click
 @click.option("--without_test", is_flag=True, help="without test data output")
 @click.option("--use_info", is_flag=True, help="using cv_info to split data")
 def main(**kwargs):
+    """ GCN (cv-splitter) entry point
+    """
     logger = get_logger("tkgcn-cv-splitter")
+    logger.info(f"{kwargs}")
