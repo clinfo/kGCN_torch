@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from ..logger import get_logger
+from ..utils.logger import get_logger
 import click
 
 

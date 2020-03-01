@@ -1,6 +1,6 @@
 import click
 
-from ..logger import get_logger
+from ..utils.logger import get_logger
 
 
 @click.command(context_settings={"ignore_unknown_options": True})
