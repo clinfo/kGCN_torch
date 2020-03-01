@@ -90,4 +90,4 @@ def main(**kwargs):
     mode [train/infer/train_cv/visualize]
     """
     logger = get_logger("tkgcn")
-    print(kwargs)
+    logger.debug(kwargs)

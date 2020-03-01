@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
+import click
 
 from ..utils.logger import get_logger
-import click
+
 
 
 @click.command(context_settings={"ignore_unknown_options": True})
@@ -63,6 +64,7 @@ import click
 )
 @click.option("--regression", is_flag=True, default=False, help="regression")
 def main(**kwargs):
+    """ GCN(chem entry point)
+    """
     logger = get_logger("tkgcn-chem")
-    print(kwargs)
-    pass
+    logger.debug(kwargs)

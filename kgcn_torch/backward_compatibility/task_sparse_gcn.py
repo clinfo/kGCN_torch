@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
+import click
 
 from ..utils.logger import get_logger
-import click
 
 
 @click.command(context_settings={"ignore_unknown_options": True})
@@ -86,5 +86,8 @@ import click
     "--visualization_header", type=str, default=None, help="filename header of visualization",
 )
 def main(**kwargs):
+    """ kGCN task_sparse_gcn entry point
+    """
     logger = get_logger("tkgcn-sparse")
     logger.debug("arguments: {kwargs}")
+    return kwargs

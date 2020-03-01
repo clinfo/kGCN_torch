@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-from ..utils.logger import get_logger
 import click
 
+from ..utils.logger import get_logger
 
 @click.command(context_settings={"ignore_unknown_options": True})
 @click.argument("mode", type=str, nargs=1)
@@ -16,5 +15,7 @@ import click
 )
 @click.option("--cpu", is_flag=True, help="cpu mode (calcuration only with cpu)")
 def main(**kwargs):
+    """ kGCN gen entry point
+    """
     logger = get_logger("tkgcn-gen")
     logger.debug(f"arguments: {kwargs}")

@@ -6,11 +6,12 @@ import torch_geometric.nn as geonn
 import torch_geometric.data as Data
 
 from .base_module import BaseModule
-from .utils import Initializer
+from .init import Initializer
 
 
 class MultiedgeGCN(BaseModule):
-    """This GCN Moudle is compatible with original kGCN GCN layer. Original one can treat multi state graph. These states are corresponding to each channels.
+    """This GCN Moudle is compatible with original kGCN's GCN layer.
+    Original one can treat multi state graph. These states are corresponding to each channels.
 
     ```
 
@@ -34,7 +35,8 @@ class MultiedgeGCN(BaseModule):
         self.gcns = nn.ModuleList(
             [
                 geonn.GCNConv(
-                    in_channels, out_channels, improved, cached, bias, normalize, **kwargs
+                    in_channels, out_channels, improved, cached=cached,
+                    bias=bias, normalize=normalize, **kwargs
                 )
                 for _ in range(adj_channel_num)
             ]
