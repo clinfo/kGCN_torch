@@ -4,6 +4,7 @@
 
 ## Why Pytorch version?
 
+* Based on [Pytorch geometric](https://github.com/rusty1s/pytorch_geometric)
 * More user-friendly
 * More test
 * More developer-friendly
