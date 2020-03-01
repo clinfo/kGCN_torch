@@ -6,3 +6,4 @@ setuptools
 six
 typing
 torch >= 1.0.0
+click
