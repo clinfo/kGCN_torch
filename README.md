@@ -1,9 +1,10 @@
-![Python package](https://github.com/clinfo/kGCN_torch/workflows/Python%20package/badge.svg)
+[![Python package](https://github.com/clinfo/kGCN_torch/workflows/Python%20package/badge.svg)](https://github.com/clinfo/kGCN_torch/actions)
 # Pytorch Implementation of [kGCN](https://github.com/clinfo/kGCN)
 
 
 ## Why Pytorch version?
 
+* Based on [Pytorch geometric](https://github.com/rusty1s/pytorch_geometric)
 * More user-friendly
 * More test
 * More developer-friendly
