@@ -1,7 +1,7 @@
 import torch
 import pytest
 
-from kgcn_torch.nn.init import feedforward_init, _feedforward_init, Initializer
+from kgcn_torch.nn.layers.init import feedforward_init, _feedforward_init, Initializer
 
 
 @pytest.fixture(
