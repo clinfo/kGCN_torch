@@ -102,3 +102,6 @@ example/pytorch/*
 \.*#
 
 exp/*
+*.zip
+*.sdf
+processed/*
