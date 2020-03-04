@@ -8,6 +8,7 @@ import torch.optim as optim
 from torch.optim.lr_scheduler import StepLR
 import torchex.nn as exnn
 from kgcn_torch.datasets.tox21 import Tox21Dataset
+from kgcn_torch.nn.metrics import MaksedBCELoss
 from torch_geometric.nn import GCNConv, global_mean_pool
 from torch_geometric.data import DataLoader
 from torch_geometric.utils import to_dense_batch
