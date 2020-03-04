@@ -56,9 +56,9 @@ class Tox21Dataset(InMemoryRdkitDataset):
         self.none_label = none_label
         self.max_n_atoms = max_n_atoms
         self.max_n_types = max_n_types
-        self.mol = self._get_valid_mols()
-        self._len = len(self.mol)
+        self.mol = None # set in def download(self).
         super(Tox21Dataset, self).__init__(savedir, None, None, None)
+        self._len = len(self.mol)
         self.data, self.slices = torch.load(self.processed_paths[0])
 
     @property
@@ -81,6 +81,7 @@ class Tox21Dataset(InMemoryRdkitDataset):
         else:
             download(url, filename, self.root)
         extracted_files = extract_zipfile(savefilename, self.root)
+        self.mol = self._get_valid_mols()
         return extracted_files
 
     def process(self):
