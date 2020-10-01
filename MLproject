@@ -1,0 +1,20 @@
+name: kgcn_torch
+
+conda_env: environments.yml
+
+entry_points:
+  installation:
+    command: "sh install.sh"
+  preprocess:
+    command: "echo 'not supported'"
+  main:
+    parameters:
+      mode: {type: str, default: "train_cv"}
+      config: {type: path, default: '.'}
+    command:
+      echo "Simple entry point[GCN].";
+      python -m kgcn_torch.backward_compatibility.gcn
+      {mode} 
+      --config {config} 
+  kgcn:
+    command: "echo 'not supported'"

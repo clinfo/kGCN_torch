@@ -91,3 +91,7 @@ def main(**kwargs):
     """
     logger = get_logger("tkgcn")
     logger.debug(kwargs)
+
+    
+if __name__ == '__main__':
+    main()
