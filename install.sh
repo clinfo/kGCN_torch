@@ -1,7 +1,13 @@
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-rustup toolchain install nightly
+echo "install rustup"
+
+if [ -d $HOME/.cargo ]; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    rustup toolchain install nightly
+fi
+echo "change default mode to nightly"    
 rustup default nightly
+
 pip install torchex setuptools_rust
 pip install scipy numpy networkx
 
