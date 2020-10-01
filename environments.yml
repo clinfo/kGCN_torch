@@ -3,7 +3,6 @@ channels:
   - pytorch
   - anaconda
   - defaults
-  - conda-forge
 dependencies:
   - _libgcc_mutex=0.1=main
   - _pytorch_select=0.1=cpu_0
@@ -146,4 +145,3 @@ dependencies:
     - werkzeug==1.0.1
     - wrapt==1.12.1
     - zipp==3.2.0
-    - -e .
