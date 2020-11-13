@@ -105,3 +105,4 @@ exp/*
 *.zip
 *.sdf
 processed/*
+mlruns/*
