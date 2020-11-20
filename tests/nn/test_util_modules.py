@@ -14,8 +14,8 @@ from kgcn_torch.nn.util_modules import Concatenate
 def test_concatenate(axis, expected):
     a = torch.randn(5, 4, 3, 2)
     b = torch.randn(5, 4, 3, 2)
-    net = Concatenate()
-    c = net(a, b, axis=axis)
+    net = Concatenate(axis)
+    c = net(a, b)
     assert list(c.shape) == expected
 
-    
+
